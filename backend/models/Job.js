@@ -24,7 +24,8 @@ const jobSchema = new mongoose.Schema({
   datePosted: {
     type: Date,
     default: Date.now
-  }
-});
+  },
+  requiredSkills: [String]   // ["React", "Node", "MongoDB"]
+}, { timestamps: true });
 
 module.exports = mongoose.model('Job', jobSchema);

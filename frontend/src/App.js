@@ -9,18 +9,20 @@ import JobDetails from "./pages/JobDetails";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import JobsList from "./pages/JobsList"; // ✅ Import Browse Jobs
-import ProtectedRoute from "./components/ProtectedRoute";
 import ApplyJob from "./pages/ApplyJob";
 import EmployerDashboard from "./pages/EmployerDashboard";
+import ResumeAnalyzer from "./pages/ResumeAnalyzer";
+import Profile from "./pages/Profile";
+import Applications from "./pages/Applications";
+import EmployerRoute from "./components/EmployerRoute";
+
+
 
 
 function App() {
   const user = JSON.parse(localStorage.getItem("user"));
 
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    window.location.href = "/";
-  };
+ 
 
   return (
     <Router>
@@ -31,25 +33,43 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/jobs" element={<JobsList />} /> {/* ✅ Moved here */}
           <Route path="/apply/:id" element={<ApplyJob />} />
-          <Route path="/employer-dashboard" element={<EmployerDashboard />} />
+          <Route
+            path="/employer-dashboard"
+            element={
+              <EmployerRoute>
+                <EmployerDashboard />
+              </EmployerRoute>
+            }
+          />
+
+          <Route path="/resume-analyzer" element={<ResumeAnalyzer user={user} />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/applications/:jobId" element={<Applications />} />
+          <Route path="/applications/:jobId" element={<Applications />} />
+
+
 
 
           <Route
             path="/add"
             element={
-              <ProtectedRoute>
+              <EmployerRoute>
                 <AddJob />
-              </ProtectedRoute>
+              </EmployerRoute>
             }
           />
+
+
           <Route
             path="/edit/:id"
             element={
-              <ProtectedRoute>
+              <EmployerRoute>
                 <EditJob />
-              </ProtectedRoute>
+              </EmployerRoute>
             }
           />
+
+
           <Route path="/job/:id" element={<JobDetails />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />

@@ -62,6 +62,9 @@ const JobsList = () => {
               <Link to={`/job/${job._id}`} className="btn-view">
                 View Details
               </Link>
+              <Link to={`/applications/${job._id}`} className="btn-view">
+                View Applications
+              </Link>
             </div>
           ))
         )}

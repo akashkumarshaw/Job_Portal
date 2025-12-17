@@ -20,16 +20,20 @@ const Navbar = () => {
         <Link to="/">Home</Link>
         <Link to="/add">Post Job</Link>
         <Link to="/jobs">Browse Jobs</Link>
+
+       
+        <Link to="/resume-analyzer">Resume Analyzer</Link>
+
         {!user && (
           <>
             <Link to="/login">Login</Link>
             <Link to="/signup" className="signup-btn">Sign Up</Link>
-           
-
           </>
         )}
+
         {user && (
           <>
+            <Link to="/profile">Profile</Link>
             <Link to="/employer-dashboard">Dashboard</Link>
             <span className="welcome">Hi, {user.name}</span>
             <button onClick={handleLogout} className="logout-btn">Logout</button>
