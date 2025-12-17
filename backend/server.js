@@ -23,7 +23,7 @@ app.use('/api/jobs', jobRoutes);
 app.use('/api/users', userRoutes);
 app.use("/api/applications", applicationRoutes);
 app.use("/api/resume", resumeRoutes);
-app.use("/api/video", videoRoutes); // ✅ Add here
+app.use("/api/videos", videoRoutes); // ✅ Add here
 
 
 // ✅ MongoDB connection
